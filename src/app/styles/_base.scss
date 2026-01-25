@@ -1,0 +1,142 @@
+@use "./_variables" as *;
+@use "./_mixins" as *;
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("/font/Poppins/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("/font/Poppins/Poppins-Light.ttf");
+}
+@font-face {
+  font-family: "Poppins-ExtraLight";
+  src: url("/font/Poppins/Poppins-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("/font/Poppins/Poppins-Medium.ttf");
+}
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("/font/Poppins/Poppins-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("/font/Poppins/Poppins-Bold.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $color-secondary-orange;
+  border-radius: 70rem;
+  &:hover {
+    background-color: #666;
+  }
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  font-family: $font-family;
+  color: $color-secondary;
+  background-color: $background;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 500;
+  color: $color-secondary;
+}
+
+h1 {
+  font-size: $text-5xl;
+  font-family: "Poppins-SemiBold";
+}
+h2 {
+  font-size: $text-xl;
+  font-family: "Poppins-Medium";
+}
+h3 {
+  font-size: $text-lg;
+  font-family: "Poppins-Medium";
+}
+h4 {
+  font-size: $text-md;
+  font-family: "Poppins-SemiBold";
+}
+h5 {
+  font-size: $text-base;
+  font-family: "Poppins-SemiBold";
+}
+p {
+  font-size:   $text-base;
+  color: $color-gray;
+}
+small {
+  font-size: $text-sm;
+  line-height: $text-sm;
+}
+strong {
+  font-size: $text-lg;
+  line-height: $text-md;
+   font-family: "Poppins-SemiBold";
+}
+b {
+    font-size: $text-xs;
+
+}
+
+
+@include desktop-sm {
+  h1 {
+    font-size: $text-2xl;
+  }
+  h2 {
+    font-size: $text-xl;
+  }
+  h3 {
+    font-size: $text-lg;
+  }
+  h4 {
+    font-size: $text-md;
+  }
+}
+
+@include tablet {
+  h1 {
+    font-size: $text-2xl;
+  }
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+@include mobile {
+  h1 {
+    font-size: $text-xl;
+  }
+  p {
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,42 @@
+.cardPortrait {
+  display: flex;
+  flex-direction: column;
+  padding: var(--text-md);
+  background-color: $color-white;
+  border-radius: 1rem;
+  width: min-content;
+  h3 {
+    margin-top: 1rem;
+    text-align: left;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+  }
+  p {
+    color: var(--color-secondary);
+  }
+}
+.containerCard{
+  width: min-content;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: $color-white;
+}
+.cardImage {
+  width: $text-9xl;
+  object-fit: cover;
+  height: auto;
+  background-color: var(--color-white-gray);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.footer img {
+  width: auto;
+  object-fit: cover;
+  height: 1.5rem;
+  transform: rotate(180deg);
+}

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/"],
+      "@/generalStyles": ["./src/app/components/style.module.scss"],
+      "@/styles/*": ["./src/app/styles/*"],
+      "@/containers/*": ["./src/app/components/containers/*"],
+      "@/modules/*": ["./src/app/components/modules/*"],
+      "@/UI/*": ["./src/app/components/UI/*"],
+      "@/font/*": ["./public/font/*"],
+      "@/assets/*": ["./public/assets/*"]
+    }
+  }
+}

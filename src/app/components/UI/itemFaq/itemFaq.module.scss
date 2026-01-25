@@ -1,0 +1,31 @@
+.question {
+  border-bottom: 0.1rem solid $color-secondary-gray;
+  padding: 1rem 0;
+  cursor: pointer;
+
+}
+
+.questionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.descQuestion {
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+
+}
+
+.questionImg {
+  transition: all 0.3s ease;
+}
+
+
+
+.icons {
+  height: $text-xl;
+  object-fit: cover;
+  width: auto;
+}

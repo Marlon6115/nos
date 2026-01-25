@@ -1,0 +1,147 @@
+.containerTech {
+  background-color: var(--color-black);
+  border-radius: 3rem;
+  overflow: hidden;
+  padding: 4rem;
+  color: var(--color-primary);
+  position: relative;
+  .title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  h1 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: space-around;
+    position: absolute;
+    width: 30%;
+  }
+}
+.techResume {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 400ms;
+}
+.tech-resume-gonna-change {
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: 400ms;
+}
+.btnTechActive {
+  filter: invert(0);
+}
+.btnPrev,
+.btnNext {
+  filter: invert(50%);
+  height: var(--text-xl);
+  object-fit: cover;
+  width: auto;
+}
+
+.slide::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.slide {
+  display: flex;
+
+  gap: 25%;
+
+  overflow-x: scroll;
+
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
+  align-items: end;
+}
+.itemSlide {
+  flex: 0 0 calc((75%) * 0.3);
+  height: 300px;
+
+  transition:
+    flex-basis 0.5s ease,
+    opacity 0.5s ease;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  transition: 800ms;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.active {
+  height: 45rem;
+  transition: 800ms;
+  flex: 0 0 calc((75%) * 0.7);
+  background-color: red;
+}
+.icons {
+  height: var(--text-xl);
+  object-fit: cover;
+  width: auto;
+}
+
+@include mobile {
+  .containerTech {
+    overflow: hidden;
+    width: 100%;
+    .description {
+      position: relative;
+      max-width: auto;
+      width: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    .description {
+      position: relative;
+      padding-bottom: 1rem;
+    }
+  }
+  .resume {
+    text-align: center;
+  }
+  .slide {
+    flex-direction: column;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    height: 60dvh;
+
+    align-items: stretch;
+    scroll-snap-type: y mandatory;
+
+    gap: 2rem;
+  }
+  .slide > :first-child {
+    visibility: hidden;
+    display: none;
+  }
+  .itemSlide {
+    width: 80%;
+    margin: 0 auto;
+
+    height: auto;
+
+    flex: 0 0 25%;
+  }
+  .active {
+    width: 100%;
+
+    height: auto;
+
+    flex: 0 0 70%;
+  }
+}

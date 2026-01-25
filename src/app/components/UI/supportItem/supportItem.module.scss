@@ -1,0 +1,34 @@
+.listItem {
+  h4 {
+    font-family: "Poppins-Regular";
+    color: $color-secondary-gray4;
+    margin-bottom: 0.8rem;
+  }
+  h3 {
+    position: relative;
+    margin-bottom: 4rem;
+    text-align: center;
+    &::before {
+      content: "";
+      border-bottom: 0.1rem solid black;
+      width: 100%;
+      z-index: 2;
+      position: absolute;
+      bottom: -1.5rem;
+    }
+  }
+}
+
+@include mobile {
+  .listItem {
+    h3 {
+      margin-bottom: 2rem;
+      width: auto;
+      &::before {
+        content: "";
+
+        bottom: -0.5rem;
+      }
+    }
+  }
+}

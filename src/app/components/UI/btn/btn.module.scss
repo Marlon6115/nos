@@ -1,0 +1,229 @@
+.itembtn {
+  color: $color-primary;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: $transition;
+  white-space: nowrap;
+  font-size:   $text-base;
+  font-family: "Poppins-Regular";
+  transition: 400ms;
+  width: min-content;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.white {
+  background-color: $color-white;
+  color: $color-black;
+  &:hover {
+    background-color: $color-secondary-gray3;
+    transition: 400ms;
+  }
+}
+.black {
+  background-color: $color-black;
+}
+.transparent {
+  background-color: transparent;
+  border: 0.15rem solid $color-secondary-gray;
+}
+.black,
+.white,
+.transparent {
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+}
+.linkBlack,
+.linkWhite {
+  list-style: none;
+  position: relative;
+  padding-bottom: 0.25rem;
+  width: min-content;
+  text-decoration: none;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0.1rem;
+    background: #000;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 250ms ease;
+  }
+
+  &:hover::before,
+  &:focus-within::before {
+    transform: scaleX(1);
+    background: $color-secondary-orange;
+  }
+}
+.linkWhite,
+.linkBlack {
+  &::before,
+  &:focus-within::before {
+    background: $color-secondary-orange;
+  }
+}
+.linkBlack {
+  color: $color-black;
+  &:hover {
+    color: $color-secondary-orange !important;
+  }
+}
+@include mobile {
+  .itembtn {
+    padding: 0.5rem;
+    font-size: 0.75rem !important;
+  }
+}
+// @use url("style.css");
+
+// button,
+// input[type="submit"] {
+//   background-color: $color-black);
+//   color: $color-primary);
+//   border: none;
+//   padding: 12px 24px;
+//   border-radius: $border-radius);
+//   cursor: pointer;
+//   transition: $transition);
+//   border-radius: 5rem;
+//   width: min-content;
+//   white-space: nowrap;
+//   font-family: "Poppins", sans-serif v;
+//   transition: 400ms;
+// }
+// .back {
+//   position: absolute;
+//   left: 2rem;
+//   top: 1.5rem;
+// }
+// .back img{
+//   height: 1.5rem;
+//   width: auto;
+//   object-fit: cover;
+// }
+// button:hover {
+//   opacity: 0.9;
+// }
+
+// button:active {
+//   transform: scale(0.98);
+// }
+
+// button[color="white"]:hover {
+//   background-color: $color-secondary-gray2);
+//   transition: 400ms;
+// }
+
+// button[color="white"],
+// button[color="white2"],
+// input[color="white"] {
+//   background-color: $color-white);
+//   color: $color-secondary);
+//   font-size: var(--text-normal);
+// }
+
+// button[color="white2"] {
+//   padding: 0.5rem 1rem;
+//   border: 0.1rem solid var(--color-secondary-gray);
+//   font-size: var(--text-sm);
+//   display: flex;
+//   align-items: center;
+// }
+// button[color="gray2"] {
+//   padding: 0.5rem 1rem;
+//   border-bottom: 0.2rem solid var(--color-secondary-orange);
+//   font-size: var(--text-sm);
+//   display: flex;
+//   align-items: center;
+//   background-color: transparent;
+//   border-radius: 0;
+//   color: var(--color-secondary-gray);
+// }
+
+// button[color="white2"] img {
+//   margin-left: 0.5rem;
+//   object-fit: cover;
+//   transform: rotate(180deg);
+//   height: auto;
+//   width: var(--text-_base);
+// }
+
+// button[color="gray"] {
+//   background-color: var(--color-secondary-gray2);
+//   color: var(--color-secondary);
+// }
+
+// button[color="black2"] {
+//   background-color: transparent;
+//   border: 0.1rem solid var(--color-secondary-gray);
+// }
+
+// button[size="small"] {
+//   font-size: 0.8rem;
+//   padding: 8px 16px;
+// }
+
+// button[size="large"] {
+//   font-size: 1.2rem;
+//   padding: 16px 32px;
+// }
+
+// li {
+//   list-style: none;
+//   position: relative;
+//   padding-bottom: 0.25rem;
+//   cursor: pointer;
+// }
+
+// a {
+//   text-decoration: none;
+//   color: var(--color-secondary);
+// }
+
+// li::before {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   height: 0.1rem;
+//   background: #000;
+//   transform: scaleX(0);
+//   transform-origin: left center;
+//   transition: transform 250ms ease;
+// }
+
+// li:hover a {
+//   color: var(--color-secondary-orange);
+// }
+
+// li:hover::before,
+// li:focus-within::before {
+//   transform: scaleX(1);
+//   background: var(--color-secondary-orange);
+// }
+
+// .container-nav-mobile li {
+//   align-items: center;
+//   display: flex;
+
+//   gap: 0.2rem;
+// }
+
+// .contact .container-nav li a {
+//   color: var(--color-primary) !important;
+// }
+
+// @media (max-width: 900px) {
+//   button {
+//     padding: 0.5rem;
+//     font-size: 0.75rem !important;
+//   }
+// }

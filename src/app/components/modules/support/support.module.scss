@@ -1,0 +1,40 @@
+.containerSupport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .sub {
+    text-align: left;
+  }
+}
+
+.display2 {
+  font-family: "Poppins-SemiBold";
+  font-size: $text-4xl;
+  line-height: $text-5xl;
+  span span {
+    color: $color-secondary-orange;
+  }
+}
+
+.orange {
+  color: $color-secondary-orange;
+}
+
+.supportItems {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+@include mobile {
+  .display2 {
+    font-size: $text-3xl;
+    line-height: $text-3xl;
+  }
+  .supportItems {
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+  }
+}
