@@ -9,6 +9,7 @@ import { Support } from "@/modules/support/support";
 import { Faq } from "@/modules/faq/faq";
 import { Services } from "@/modules/services/services";
 import { Tech } from "@/modules/tech/tech";
+import { Contact } from "@/modules/contact/contact";
 export default function Home() {
   return (
     <div className={styles.containerColumn}>
@@ -21,6 +22,7 @@ export default function Home() {
       <Support/>
       <Faq/>
       <Services/>
+      <Contact/>
     </div>
   );
 }
