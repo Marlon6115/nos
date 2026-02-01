@@ -30,8 +30,7 @@ const dataFaq = [
   {
     id: 5,
     title: "¿Puedo rastrear mi pedido?",
-    description:
-      "Sí, puedes rastrear tu pedido ingresando el número de seguimiento proporcionado en la confirmación de compra.",
+    description: "Sí, puedes rastrear tu pedido ingresando el número de seguimiento proporcionado en la confirmación de compra.",
   },
 ];
 

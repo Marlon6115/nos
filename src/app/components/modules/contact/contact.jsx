@@ -64,7 +64,7 @@ export const Contact = () => {
             <div className={styles.poster}>
               <div className={styles.details}>
                 <div>
-                  <h3>CJ 7 Pro</h3>
+                  <h3>Cj 7 Pro</h3>
                   <p>Headphones Premium</p>
                 </div>
               </div>
