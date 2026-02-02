@@ -24,7 +24,11 @@
   width: 100%;
   background-color: $color-white;
 }
-
+.profileIcon{
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
 .logo {
   font-size: 1.5rem;
   font-family: Arial, italic;

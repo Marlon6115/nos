@@ -6,7 +6,7 @@ import { validateImageUrl } from "@/hooks/imageValidatorHook";
 import styles from "./image.module.scss";
 import { CldImage, getCldImageUrl } from "next-cloudinary";
 import Image from "next/image";
-export const ImageRender = ({ propImg, modifiers }) => {
+export const ImageRender = ({ propImg, modifiers, onClick }) => {
   if (!propImg) {
     return (
       <Image
@@ -16,6 +16,7 @@ export const ImageRender = ({ propImg, modifiers }) => {
         width={0}
         height={0}
         quality={75}
+        onClick={onClick}
       />
     );
   }
@@ -28,6 +29,7 @@ export const ImageRender = ({ propImg, modifiers }) => {
         width={0}
         height={0}
         quality={75}
+        onClick={onClick}
       />
     );
   }
@@ -35,28 +37,15 @@ export const ImageRender = ({ propImg, modifiers }) => {
     <CldImage
       src={propImg}
       className={styles.imageRender}
-      // NO uses 0. Usa un valor base alto para garantizar calidad
-      // 1. DIMENSIONES BASE:
-      // Estos números NO son el tamaño final en pantalla.
-      // Sirven para que Next.js reserve el espacio (evita saltos) y Cloudinary sepa la proporción.
-      // Usa números grandes para buena calidad base.
+      onClick={onClick}
       width={2560}
       height={1440}
-      // 2. CSS PARA QUE OBEDEZCA AL PADRE:
-      // Esto sobrescribe el width/height fijos de arriba visualmente.RESPONSIVE INTELIGENTE:
-      // Le dice al navegador qué versiones descargar según el ancho de pantalla.
       alt={`Imagen ${propImg}`}
-      // Opcional: Recorte inteligente si quieres forzar un formato
-      // Si quieres mantener la imagen original tal cual, quita el crop.
       crop={{
-        type: "limit", // "limit" escala sin recortar, "fill" recorta
+        type: "limit",
         source: true,
       }}
       {...modifiers}
-
-      // onError={() => {
-      //   setError(true);
-      // }}
     />
   );
 };

@@ -4,33 +4,47 @@ import styles from "../forms.module.scss";
 import { InputComponent } from "@/UI/input/input";
 import { Btn } from "@/UI/btn/btn";
 import { Toast } from "@/modules/toast/toast";
+import { useFirestore } from "@/hooks/useFirestore";
 
-export const CardModalLogin = ({ handleChange }) => {
+export const CardModalLogin = ({ notification }) => {
+  const { login, data, loading } = useFirestore("usuarios");
   const [toast, setToast] = useState({
     show: false,
     message: "",
     type: "success",
   });
 
-  const showToast = (message, type) => {
-    setToast({ show: true, message, type });
-  };
-
   const handleCloseToast = () => {
     setToast({ ...toast, show: false });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    const finalData = {
-      email: data.email,
-      password: data.password,
-      keepSession: formData.get("keepSession") === "on",
-      ssssssssssss,
-    };
-    showToast("Usuario registrado correctamente", "success");
+    const user = Object.fromEntries(formData.entries());
+    try {
+      await login(user.email, user.password);
+      const sessionToken = `fake_auth_token_${Date.now()}`;
+      const userSession = {
+        isAuthenticated: true,
+        username: data?.username,
+        email: data?.email,
+        token: sessionToken,
+      };
+      localStorage.setItem("userSessionToken", sessionToken);
+      localStorage.setItem("userProfile", JSON.stringify(userSession));
+      window.location.reload();
+      notification({
+        message: "¡Bienvenido de nuevo!",
+        type: "success",
+      });
+    } catch (err) {
+
+      notification({
+        message: "Correo o contraseña incorrectos",
+        type: "error",
+      });
+    }
   };
   return (
     <div className={styles.cardModal}>
@@ -62,8 +76,11 @@ export const CardModalLogin = ({ handleChange }) => {
         />
         <a className={styles.forgotLink}>¿Olvidaste tu contraseña?</a>
         <div className={styles.footerCard}>
-          <Btn btnColor="black" text="Iniciar Sesión" type="submit" />
-          <Btn btnColor="white" text="Registrarse" type="submit" />
+          <Btn
+            btnColor="black"
+            text={loading ? "Iniciando..." : "Iniciar Sesión"}
+            type="submit"
+          />
         </div>
       </form>
       <Toast

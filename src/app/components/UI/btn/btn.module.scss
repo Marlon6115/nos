@@ -28,8 +28,13 @@
   background-color: transparent;
   border: 0.15rem solid $color-secondary-gray;
 }
+.orange {
+  background-color: $color-secondary-orange;
+  border: 0.15rem solid $color-white;
+}
 .black,
 .white,
+.orange,
 .transparent {
   padding: 0.5rem 1rem;
   border-radius: $border-radius;

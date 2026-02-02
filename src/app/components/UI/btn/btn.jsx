@@ -9,6 +9,7 @@ export const Btn = ({
   type,
   id,
   children,
+  modifiers,
   btnColor = "white" | "black" | "linkWhite" | "linkBlack" | "transparent",
 }) => {
   return href ? (
@@ -26,7 +27,9 @@ export const Btn = ({
       key={id}
       onClick={onClick}
       type={type || "button"}
+      {...modifiers}
     >
+      {children}
       {text}
     </button>
   );

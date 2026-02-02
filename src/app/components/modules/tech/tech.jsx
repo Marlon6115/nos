@@ -52,15 +52,18 @@ const products = [
 export const Tech = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [dataFetch, setdataFetch] = useState(false);
-  const { data, loading, error, getData } = useFirestore("tecnologia");
+  const { data, getData } = useFirestore("tecnologia");
   const [currentData, setCurrentData] = useState({
     isLoading: false,
-    data: products[1],
+    data: dataFetch[1],
     left: leftDisabled,
     right: right,
   });
   const handleCallData = async () => {
     const techData = await getData();
+    techData.unshift({ id: 127893891 });
+    console.log(techData[1]);
+    setCurrentData({ ...currentData, data: techData[1] });
     if (techData) setdataFetch(techData);
   };
   const refSlider = useRef();
@@ -69,16 +72,15 @@ export const Tech = () => {
     setCurrentData({ ...currentData, isLoading: true });
     setTimeout(() => {
       setCurrentData({
-        data: products[ind],
+        data: dataFetch[ind],
         isLoading: false,
         left: ind <= 1 ? leftDisabled : left,
-        right: ind === products.length - 1 ? rightDisabled : right,
+        right: ind === dataFetch.length - 1 ? rightDisabled : right,
       });
     }, 600);
   };
   const handleChangueNext = () => {
-    if (currentIndex === products.length - 1) return;
-    console.log(currentIndex + 1);
+    if (currentIndex === dataFetch.length - 1) return;
     setCurrentIndex(currentIndex + 1);
     handleChangueData(currentIndex + 1);
     refSlider.current.children[currentIndex + 1].scrollIntoView({
@@ -102,13 +104,15 @@ export const Tech = () => {
   useMemo(() => {
     if (data) {
       handleCallData();
+      console.log(refSlider.current);
     }
     if (!refSlider.current || isMobile || !products) return;
     const childHeight =
       refSlider.current.children[isMobile ? 0 : 1]?.offsetHeight || 0;
     refSlider.current.style.height = `${childHeight + 20}px`;
+
   }, []);
-  if (!products) {
+  if (!dataFetch) {
     return <h1>Cargando</h1>;
   }
   return (
@@ -125,10 +129,12 @@ export const Tech = () => {
             <div className={styles.title}>
               <ImageRender propImg={calidad} />
 
-              <h3 className={styles.titleTech}>{currentData.data.title}</h3>
+              <h3 className={styles.titleTech}>{currentData?.data?.titulo}</h3>
             </div>
             <div className={styles.resume}>
-              <small className={styles.descTech}>{currentData.data.desc}</small>
+              <small className={styles.descTech}>
+                {currentData?.data?.descripcion}
+              </small>
             </div>
           </div>
           <div className={styles.title}>
@@ -149,13 +155,13 @@ export const Tech = () => {
         <div ref={containerRef} className={styles.sliderContainer}>
           <div className={styles.slide} ref={refSlider}>
             {dataFetch &&
-              dataFetch.map((tech, index) => (
+              dataFetch?.map((tech, index) => (
                 <div
                   key={tech.id}
                   className={`${styles.itemSlide} ${currentIndex === index ? styles.active : ""}`}
                 >
                   <ImageRender
-                    propImg={tech.img}
+                    propImg={tech.imagen}
                     modifiers={{
                       className: index === 0 && !isMobile ? styles.hidden : "",
                     }}
@@ -163,16 +169,6 @@ export const Tech = () => {
                 </div>
               ))}
           </div>
-
-          {/* <div className={styles.itemSlide}>
-            <img src="./assets/Z11-Pro-tecnologia.jpg" alt="" />
-          </div>
-          <div className={styles.itemSlide}>
-            <img src="./assets/Pd-Buds Pro.jpg" alt="" />
-          </div>
-          <div className={styles.itemSlide}>
-            <img src="./assets/X1-Pro-tecnologia.jpg" alt="" />
-          </div> */}
         </div>
       </div>
     </div>

@@ -3,32 +3,19 @@ import styles from "../forms.module.scss"; // Asegúrate que la ruta sea correct
 import { InputComponent } from "@/UI/input/input";
 import { Btn } from "@/UI/btn/btn";
 import { useFirestore } from "@/hooks/useFirestore";
-import { Toast } from "@/modules/toast/toast";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase/config";
 
-export const CardModaRegister = ({ handleChange }) => {
-  const { addData } = useFirestore("usuarios");
+export const CardModaRegister = ({ notification }) => {
+  const { setDocument, loading } = useFirestore("usuarios");
   const [inputState, setInputState] = useState({
     password: "",
     repeatPassword: "",
   });
-
   const [errors, setErrors] = useState({
     password: "",
     repeatPassword: "",
   });
-  const [toast, setToast] = useState({
-    show: false,
-    message: "",
-    type: "success",
-  });
-
-  const showToast = (message, type) => {
-    setToast({ show: true, message, type });
-  };
-
-  const handleCloseToast = () => {
-    setToast({ ...toast, show: false });
-  };
 
   const validateInput = (name, value) => {
     let errorMsg = "";
@@ -71,18 +58,37 @@ export const CardModaRegister = ({ handleChange }) => {
     const data = Object.fromEntries(formData.entries());
 
     const finalData = {
-      nombre: data.user,
+      username: data.user,
       email: data.email,
-      clave: data.password,
+      password: data.password,
     };
-
     try {
-      // await addData(finalData);
-      showToast("Usuario registrado correctamente", "success");
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password,
+      );
+      const uid = userCredential.user.uid; 
+      await setDocument(uid, finalData);
+ 
+      notification({
+        message: "Usuario registrado correctamente",
+        type: "success",
+      });
       e.target.reset();
-      handleChange();
     } catch (error) {
-      showToast("Usuario no registrado", "error");
+      console.log(error);
+      if (error.code === "auth/email-already-in-use") {
+        notification({
+          message: "Usuario ya registrado",
+          type: "error",
+        });
+      } else {
+        notification({
+          message: "Error en el servicio",
+          type: "error",
+        });
+      }
     }
   };
 
@@ -151,16 +157,13 @@ export const CardModaRegister = ({ handleChange }) => {
         <a className={styles.forgotLink}>¿Olvidaste tu contraseña?</a>
 
         <div className={styles.footerCard}>
-          <Btn btnColor="black" text="Registrarse" type="submit" />
-          <Btn btnColor="white" text="Iniciar Sesión" type="button" />
+          <Btn
+            btnColor="black"
+            text={loading ? "Cargando..." : "Registrarse"}
+            type="submit"
+          />
         </div>
       </form>
-      <Toast
-        show={toast.show}
-        message={toast.message}
-        type={toast.type}
-        onClose={handleCloseToast}
-      />
     </div>
   );
 };
