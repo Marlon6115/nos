@@ -86,7 +86,7 @@ const dataSupport = [
 ];
 export const Support = () => {
   return (
-    <div className={generalStyles.generalContainer}>
+    <div className={generalStyles.generalContainer} id="support">
       <div className={styles.containerSupport}>
         <Fade way="down">
           <div className={styles.display2}>

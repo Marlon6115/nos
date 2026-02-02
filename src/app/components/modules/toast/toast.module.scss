@@ -1,0 +1,73 @@
+// toast.module.scss
+
+.toastContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  min-width: 300px;
+  max-width: 400px;
+
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: $color-bg-dark;
+  color: $color-text;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  border-left: 6px solid transparent;
+
+  &.success {
+    border-left-color: $color-success;
+  }
+  &.error {
+    border-left-color: $color-secondary-orange;
+  }
+  &.warning {
+    border-left-color: $color-secondary-orange3;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.success {
+    color: $color-success;
+  }
+  &.error {
+    color: $color-secondary-orange;
+  }
+  &.warning {
+    color: $color-secondary-orange3;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.message {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

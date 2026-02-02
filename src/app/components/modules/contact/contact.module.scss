@@ -1,9 +1,9 @@
 .containerContact {
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-black);
+  background-color: $color-black;
   border-radius: 2rem;
-  color: var(--color-primary);
+  color: $color-primary;
   overflow: hidden;
   padding: 4rem;
   gap: 5%;
@@ -16,11 +16,13 @@
   ul {
     width: min-content;
   }
-  h1 {
-    color: var(--color-primary);
+  h1,
+  h5,
+  h3 {
+    color: $color-primary;
   }
   p {
-    color: var(--color-secondary-gray);
+    color: $color-secondary-gray;
   }
   .details {
     display: flex;
@@ -41,14 +43,49 @@
   justify-content: center;
   gap: 1rem;
   height: min-content;
-  .icons {
-    height: 1.2rem;
-  }
 }
+.itemDetails input {
+  position: relative;
+  outline: none;
+  padding: 0.5rem 0.75rem;
+  font-size:$text-sm;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid$color-secondary-gray2;
+  transition: 200ms ease;
+  appearance: none;
+  height: min-content;
+  color:$color-primary;
+}
+
+//   li:hover a {
+//     color: $color-secondary-orange;
+//   }
+
+//   li:hover::before,
+//   li:focus-within::before {
+//     transform: scaleX(1);
+//     background: $color-secondary-orange;
+//   }
+
+//   li {
+//     align-items: center;
+//     display: flex;
+
+//     gap: 0.2rem;
+//   }
+//   li a {
+//     color: $color-primary) !importan;
+//   }
+//   .icons {
+//     height: 1.2rem;
+//   }
+// }
+
 .socials {
   display: flex;
   gap: 1rem;
-  height: var(--text-lg);
+  height: $text-lg;
   img {
     height: 100%;
     object-fit: cover;
@@ -66,19 +103,19 @@
   width: 25vw;
   height: 100%;
 }
-.slidetrack {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  margin: 0 auto;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto, 100%);
-  width: auto;
 
-  scrollbar-width: none;
+.slideTrack {
+  display: flex;
 
-  -ms-overflow-style: none;
+  width: max-content;
+  animation: scroll 25s linear infinite;
 }
+
+/* Pausar animación al pasar el mouse (opcional, muy buena UX) */
+.slideTrack:hover {
+  animation-play-state: paused;
+}
+
 .poster {
   height: auto;
   position: relative;
@@ -93,8 +130,13 @@
     left: 1.5rem;
   }
 }
-.mobile {
-  display: none;
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @include mobile {

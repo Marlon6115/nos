@@ -5,7 +5,7 @@
   cursor: pointer;
   transition: $transition;
   white-space: nowrap;
-  font-size:   $text-base;
+  font-size: $text-base;
   font-family: "Poppins-Regular";
   transition: 400ms;
   width: min-content;
@@ -81,6 +81,28 @@
     font-size: 0.75rem !important;
   }
 }
+.formOptions {
+  display: flex;
+  justify-content: space-between; // Separa los elementos a los extremos
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem; // Espacio antes del botón de login
+  font-size: 0.85rem; // Un poco más pequeño que los inputs
+}
+
+// --- Estilos del Link "Olvidaste..." ---
+.forgotLink {
+  color: $color-gray;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  &:hover {
+    color: $color-secondary-orange;
+    text-decoration: underline;
+  }
+}
+
+// --- Estilos del Checkbox Personalizado ---
 // @use url("style.css");
 
 // button,

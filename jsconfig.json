@@ -8,7 +8,12 @@
       "@/modules/*": ["./src/app/components/modules/*"],
       "@/UI/*": ["./src/app/components/UI/*"],
       "@/font/*": ["./public/font/*"],
-      "@/assets/*": ["./public/assets/*"]
+      "@/assets/*": ["./public/assets/*"],
+      "@/images/*": ["./public/images/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/firebase/*": ["./src/firebase/*"]
     }
   }
 }

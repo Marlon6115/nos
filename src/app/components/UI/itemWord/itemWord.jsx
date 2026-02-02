@@ -1,19 +1,17 @@
 import React from "react";
-import styles from "./itemWord.module.scss"
+import styles from "./itemWord.module.scss";
 import { ImageRender } from "../Image/image";
 
-
-
-export const ItemWord = ({itemImage, text}) => {
+export const ItemWord = ({ imagen, palabra }) => {
   return (
-    <div className={`${styles.display3} ${styles.text}`} data-word={text}>
+    <div className={`${styles.display3} ${styles.text}`} data-word={palabra}>
       <div className={styles.floatImage}>
         <ImageRender
-          propImg={itemImage}
+          propImg={imagen}
           modifiers={{ className: styles.textImage }}
         />
       </div>
-      {text}
+      {palabra}
     </div>
   );
 };

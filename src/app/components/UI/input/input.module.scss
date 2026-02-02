@@ -1,0 +1,77 @@
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.eye {
+  width: 1rem;
+  height: 1rem;
+  filter: invert(100);
+}
+.inputComponent {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+
+  // Variación .black
+  &.black {
+    background-color: $color-white-gray; // Fondo oscuro (#111113)
+    color: $color-secondary; // Texto blanco
+    border: none;
+    border-bottom: 2px solid $color-secondary-gray2; // Borde sutil oscuro
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    &::placeholder {
+      color: $color-gray; // Placeholder gris medio
+      opacity: 0.8;
+    }
+
+    // Estado Focus: Borde Naranja y brillo
+    &:focus {
+      border-color: $color-secondary-gray;
+      background-color: $color-primary;
+      border-bottom: 2px solid $color-secondary; // Borde sutil oscuro
+    }
+
+    // Si el input es inválido (HTML5 validation)
+    &:invalid:not(:placeholder-shown) {
+      border-color: $color-secondary-orange;
+    }
+  }
+}
+
+// Estilo para el botón del ojo
+.toggleBtn {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: $color-gray;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-secondary-orange; // El icono se pone naranja al pasar el mouse
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Ajuste para evitar que el texto choque con el icono
+.hasIcon {
+  padding-right: 3.5rem;
+}

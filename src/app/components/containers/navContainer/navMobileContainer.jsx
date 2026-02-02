@@ -10,32 +10,13 @@ import { Btn } from "@/UI/btn/btn";
 export const NavMobileContainer = () => {
   return (
     <ul className={styles.containerNavMobile}>
-      <Btn
-        href="#products"
-        text="Productos"
-        btnColor="linkBlack"
-        id="Productos"
-      >
-        <ImageRender
-          propImg={headphones}
-          modifiers={{ className: styles.icons }}
-        />
-      </Btn>
-      <Btn href="#tech" text="Tecnologia" btnColor="linkBlack" id="Tecnologia">
-        <ImageRender propImg={tech} modifiers={{ className: styles.icons }} />
-      </Btn>
-      <Btn href="#support" text="Soporte" btnColor="linkBlack" id="Soporte">
-        <ImageRender
-          propImg={support}
-          modifiers={{ className: styles.icons }}
-        />
-      </Btn>
-      <Btn href="#contact" text="Contacto" btnColor="linkBlack" id="Contacto">
-        <ImageRender
-          propImg={contact}
-          modifiers={{ className: styles.icons }}
-        />
-      </Btn>
+      <ImageRender
+        propImg={headphones}
+        modifiers={{ className: styles.icons }}
+      />
+      <ImageRender propImg={tech} modifiers={{ className: styles.icons }} />
+      <ImageRender propImg={support} modifiers={{ className: styles.icons }} />
+      <ImageRender propImg={contact} modifiers={{ className: styles.icons }} />
     </ul>
   );
 };

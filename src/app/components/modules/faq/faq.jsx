@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+import React, { useMemo, useState } from "react";
 import styles from "./faq.module.scss";
 import { ItemFaq } from "@/UI/itemFaq/itemFaq";
 import { Fade } from "@/UI/fade/fade";
+import { useFirestore } from "@/hooks/useFirestore";
 
 const dataFaq = [
   {
@@ -30,16 +32,27 @@ const dataFaq = [
   {
     id: 5,
     title: "¿Puedo rastrear mi pedido?",
-    description: "Sí, puedes rastrear tu pedido ingresando el número de seguimiento proporcionado en la confirmación de compra.",
+    description:
+      "Sí, puedes rastrear tu pedido ingresando el número de seguimiento proporcionado en la confirmación de compra.",
   },
 ];
-
 export const Faq = () => {
+  const [dataFetch, setdataFetch] = useState(false);
+  const { data, loading, error, getData } = useFirestore("preguntas");
+  const handleCallData = async () => {
+    const questionsData = await getData();
+    if (questionsData) setdataFetch(questionsData);
+  };
+  useMemo(() => {
+    if (data) {
+      handleCallData();
+    }
+  }, []);
   return (
     <div className={styles.containerQuestions}>
       <h1>Preguntas Frecuentes</h1>
-      {dataFaq &&
-        dataFaq.map((element) => (
+      {dataFetch &&
+        dataFetch.map((element) => (
           <Fade key={element.id} way="right">
             <ItemFaq {...element} />
           </Fade>

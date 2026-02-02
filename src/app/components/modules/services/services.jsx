@@ -30,7 +30,7 @@ const dataServices = [
   },
 ];
 
-export const Services = () => {
+export const Services = () => { 
   return (
     <div className={styles.servicesContainer}>
       <h1>Servicio y Reparación</h1>

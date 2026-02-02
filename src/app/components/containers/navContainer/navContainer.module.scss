@@ -1,14 +1,13 @@
 .header {
   display: flex;
   flex-direction: column;
-
 }
 .banner {
-  background-color: var(--color-secondary);
+  background-color: $color-secondary;
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 4;
+  z-index: 10;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -23,7 +22,7 @@
   z-index: 5;
   gap: 1rem;
   width: 100%;
-  background-color: var(--color-white);
+  background-color: $color-white;
 }
 
 .logo {
@@ -46,13 +45,13 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  bottom: 1rem;
-  background-color: var(--color-white);
+  bottom: 0;
+  background-color: $color-white;
   border-radius: 2rem;
   z-index: 3;
   padding: 1rem;
-  box-shadow: 1rem 1rem 2rem var(--color-secondary-gray2);
-  max-width: 100%;
+  box-shadow: 1rem 1rem 2rem $color-secondary-gray2;
+  max-width: calc(100vw - 2rem);
   overflow: hidden;
   left: 50%;
   gap: 0.5rem;
@@ -81,5 +80,6 @@
 
   .containerNavMobile {
     display: flex;
+    gap: 2rem; /* Espacio total entre items */
   }
 }

@@ -1,7 +1,7 @@
-.cardPortrait {
+.containerCard {
   display: flex;
   flex-direction: column;
-  padding: var(--text-md);
+  padding: 1rem;
   background-color: $color-white;
   border-radius: 1rem;
   width: min-content;
@@ -14,28 +14,24 @@
     justify-content: space-between;
     align-items: center;
     flex: 1;
+    position: relative;
   }
   p {
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 }
-.containerCard{
-  width: min-content;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: $color-white;
-}
+
 .cardImage {
-  width: $text-9xl;
+  width: 10rem;
   object-fit: cover;
-  height: auto;
-  background-color: var(--color-white-gray);
+  height: 10rem;
+  background-color: $color-white-gray;
   border-radius: 1rem;
   padding: 1.5rem;
 }
 
 .footer img {
-  width: auto;
+  width: 1.5rem;
   object-fit: cover;
   height: 1.5rem;
   transform: rotate(180deg);
